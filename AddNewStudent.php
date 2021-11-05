@@ -44,7 +44,8 @@
   <?php require_once 'process.php';?>
   <div class="row justify-content-center container px-4 py-5" id="hanging-icons">
     <h2 class="pb-2 border-bottom">L'ajout d'un nouveau etudiant</h2>
-    <form action="process.php" method="POST">
+   
+    <form action="process.php<?php  if(isset($_GET['edit'])){echo"?edit=".$_GET['edit'];} ?>" method="POST">
       <div class="form-group pb-2">
         <label>Nom</label>
         <input value="<?php echo $nom; ?>" name="nom" type="text" class="form-control" placeholder="Entrez votre nom">

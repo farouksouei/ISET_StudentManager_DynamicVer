@@ -19,32 +19,28 @@
 <?php require_once 'process.php';?>
 <?php
 $mysqli = new mysqli('localhost','root','','isetstudentmanager') or die(mysqli_error($mysqli));
-$result = $mysqli->query("SELECT * FROM noteMatieres") or die($mysqli->error)
+$result = $mysqli->query("SELECT * FROM notesMatieres") or die($mysqli->error)
 ?>
 
-<div class="container px-4 py-5" id="hanging-icons">
-    <h2 class="pb-2 border-bottom">Les informations de tout les etudiants</h2>
-    <table class="table table-hover list" id="studentList">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">id Etudiant</th>
-          <th scope="col">id matiere</th>
-          <th scope="col">note matiere</th>
-        </tr>
-      </thead>
-      <?php
+
+   
+      <?php require_once 'process.php';
+      $mysqli = new mysqli('localhost','root','','isetstudentmanager') or die(mysqli_error($mysqli));
+      $result = $mysqli->query("SELECT * FROM matieres") or die($mysqli->error)?>
+  <div class="row justify-content-center container px-4 py-5" id="hanging-icons">
+    <h2 class="pb-2 border-bottom">Modifications ou ajout des notes des etudiants</h2>
+    <form action="process.php" method="POST">
+    <?php
         while ($row = $result->fetch_assoc()):
       ?>
-        <tr>
-        <td><?php echo $row['id'] ?></td>
-          <td><?php echo $row['idMatiere'] ?></td>
-          <td><?php echo $row['idStudent'] ?></td>
-          <td><?php echo $row['noteMatiere'] ?></td>
-          <td><?php echo $row['email'] ?></td>
-        </tr>
+      <div class="form-group pb-2">
+        <label>Entrez le note de la matiere <?php echo $row['matiere']?></label>
+        <input  name="matiere" type="text" class="form-control" placeholder="Entrez votre note">
+      </div>
+  
+     
 <?php endwhile;  ?>
-    </table>
+     </form>
    
       
     </div>

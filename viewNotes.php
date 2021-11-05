@@ -18,17 +18,17 @@
 <body>
 <?php
 $mysqli = new mysqli('localhost','root','','isetstudentmanager') or die(mysqli_error($mysqli));
-$result = $mysqli->query("SELECT * FROM students") or die($mysqli->error)
+$result = $mysqli->query("SELECT * FROM notesMatieres") or die($mysqli->error)
 ?>
 
   <div class="container px-4 py-5" id="hanging-icons">
-    <h2 class="pb-2 border-bottom">Les informations de tout les etudiants</h2>
+    <h2 class="pb-2 border-bottom">Les informations de tout les normalizer_get_raw_decomposition</h2>
     <table class="table table-hover list" id="studentList">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Student</th>
-          <th scope="col">Matieres</th>
+          <th scope="col">id Student</th>
+          <th scope="col">id Matieres</th>
           <th scope="col">Note Matieres</th>
         </tr>
       </thead>
@@ -39,50 +39,14 @@ $result = $mysqli->query("SELECT * FROM students") or die($mysqli->error)
         <td><?php echo $row['id'] ?></td>
           <td><?php echo $row['student'] ?></td>
           <td><?php echo $row['matiere'] ?></td>
-          <td><?php echo $row['notes matieres'] ?></td>
-          <td><?php echo $row['email'] ?></td>
-          <td><a href="viewNotes.php?view=<?php echo $row['id'];?>" class="btn btn-info">voir le bulletin</a>
-          <a href="editMatieres.php?editMatiere=<?php echo $row['id'];?>" class="btn btn-info">modifier les notes</a></td>
+          <td><?php echo $row['noteMatiere'] ?></td>  
         </tr>
 <?php endwhile;  ?>
     </table>
    
       
     </div>
-   <?php
-$mysqli = new mysqli('localhost','root','','isetstudentmanager') or die(mysqli_error($mysqli));
-$result = $mysqli->query("SELECT * FROM notematiere") or die($mysqli->error)
-?>
 
-  <div class="container px-4 py-5" id="hanging-icons">
-    <h2 class="pb-2 border-bottom">Les informations de tout les etudiants</h2>
-    <table class="table table-hover list" id="studentList">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nom</th>
-          <th scope="col">matiere</th>
-          <th scope="col">coeficient</th>
-          <th scope="col">note</th>
-        </tr>
-      </thead>
-      <?php
-        while ($row = $result->fetch_assoc()):
-      ?>
-        <tr>
-        <td><?php echo $row['id'] ?></td>
-          <td><?php echo $row['nom'] ?></td>
-          <td><?php echo $row['prenom'] ?></td>
-          <td><?php echo $row['classe'] ?></td>
-          <td><?php echo $row['email'] ?></td>
-          <td><a href="viewNotes.php?view=<?php echo $row['id'];?>" class="btn btn-info">voir le bulletin</a>
-          <a href="editMatieres.php?editMatiere=<?php echo $row['id'];?>" class="btn btn-info">modifier les notes</a></td>
-        </tr>
-<?php endwhile;  ?>
-    </table>
-   
-      
-    </div>
   
   
 </body>
